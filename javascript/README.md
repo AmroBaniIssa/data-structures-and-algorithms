@@ -6,6 +6,11 @@
 
 Each type of code challenge has slightly different instructions. Please refer to the notes and examples below for instructions for each DS&A assignment type.
 
+[array-binary-search](./array-binary-search/array-binary-search.md)
+[array-insert-shift](./array-insert-shift/array-insert-shift.md)
+[class01](./Class%2001/array-reverse.md)
+
+
 ### Data Structure: New Implementation
 
 - Create a new folder under the `javascript` level, with the name of the data structure and complete your implementation there
