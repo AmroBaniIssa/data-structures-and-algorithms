@@ -1,0 +1,1 @@
+![binary search](./Screenshot%202023-06-13%20061226.png)
