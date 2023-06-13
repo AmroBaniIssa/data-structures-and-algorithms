@@ -8,7 +8,8 @@ Each type of code challenge has slightly different instructions. Please refer to
 
 <!-- [array-binary-search](./array-binary-search/array-binary-search.md)
 [array-insert-shift](./array-insert-shift/array-insert-shift.md)
-[class01](./Class%2001/array-reverse.md) -->
+[class01](./Class%2001/array-reverse.md)
+[Your Title](your-project-name/tree/master/your-subfolder) -->
 
 
 ### Data Structure: New Implementation
