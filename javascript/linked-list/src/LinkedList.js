@@ -98,6 +98,30 @@ class Linkedlist {
     return false;
   }
 
+  kthFromEnd(k) {
+    if (!Number.isInteger(k) || k < 0) {
+      throw new Error("Invalid k value or empty list");
+    }
+  
+    let fastPtr = this.head;
+    let slowPtr = this.head;
+  
+    for (let i = 0; i < k; i++) {
+      if (fastPtr === null) {
+        throw new Error("k is greater than or equal to the length of the list");
+      }
+      fastPtr = fastPtr.next;
+    }
+  
+    while (fastPtr && fastPtr.next !== null) {
+      fastPtr = fastPtr.next;
+      slowPtr = slowPtr.next;
+    }
+  
+    return slowPtr.value;
+  }
+  
+
   print() {
     let currentNode = this.head;
     while (currentNode !== null) {
