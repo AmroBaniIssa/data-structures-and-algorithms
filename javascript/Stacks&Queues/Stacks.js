@@ -1,4 +1,4 @@
-const Node = require('./Node.js');
+const Node = require('./Node');
   
   class Stack {
     constructor() {
@@ -17,7 +17,9 @@ const Node = require('./Node.js');
   
     pop() {
       if (this.isEmpty()) {
-        return null;
+        throw new Error("Stack is empty");
+
+        // return null;
       }
   
       let removedNode = this.top;
@@ -27,7 +29,9 @@ const Node = require('./Node.js');
   
     peek() {
       if (this.isEmpty()) {
-        return null;
+        throw new Error("Stack is empty");
+
+        // return null;
       }
       return this.top.data;
     }
@@ -46,4 +50,4 @@ const Node = require('./Node.js');
       return count;
     }
   }
- 
+  module.exports = Stack;

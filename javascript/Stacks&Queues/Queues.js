@@ -1,4 +1,4 @@
-const Node = require('./Node.js');
+const Node = require('./Node');
  
 class Queue {
     constructor() {
@@ -20,7 +20,8 @@ class Queue {
   
     dequeue() {
       if (this.isEmpty()) {
-        return null;
+        // return null;
+        throw new Error("Queue is empty");
       }
   
       let removedNode = this.front;
@@ -35,7 +36,9 @@ class Queue {
   
     peek() {
       if (this.isEmpty()) {
-        return null;
+        throw new Error("Queue is empty");
+
+        // return null;
       }
       return this.front.data;
     }
@@ -54,4 +57,4 @@ class Queue {
       return count;
     }
   }
-  
+  module.exports = Queue;

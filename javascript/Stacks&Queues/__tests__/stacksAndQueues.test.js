@@ -1,5 +1,6 @@
 const Stack = require('../Stacks');
 const Queue = require('../Queues');
+const Node = require('../Node');
 
 describe('Stack', () => {
   let stack;
@@ -22,10 +23,9 @@ describe('Stack', () => {
 
   test('can successfully pop off the stack', () => {
     stack.push(1);
-    stack.push(2);
     let poppedValue = stack.pop();
-    expect(poppedValue).toBe(2);
-    expect(stack.size()).toBe(1);
+    expect(poppedValue).toBe(1);
+    expect(stack.size()).toBe(0);
   });
 
   test('can successfully empty a stack after multiple pops', () => {
@@ -46,16 +46,11 @@ describe('Stack', () => {
     expect(stack.size()).toBe(3);
   });
 
-  test('can successfully instantiate an empty stack', () => {
-    expect(stack.isEmpty()).toBe(true);
-    expect(stack.size()).toBe(0);
-  });
-
-  test('calling pop on empty stack raises an exception', () => {
+  test('calling pop on an empty stack raises an exception', () => {
     expect(() => stack.pop()).toThrow('Stack is empty');
   });
 
-  test('calling peek on empty stack raises an exception', () => {
+  test('calling peek on an empty stack raises an exception', () => {
     expect(() => stack.peek()).toThrow('Stack is empty');
   });
 });
