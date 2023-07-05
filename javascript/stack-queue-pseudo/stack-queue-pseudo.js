@@ -1,33 +1,40 @@
+const stack=require('./Stacks')
 class Queue {
     constructor() {
-      this.stack1 = [];
-      this.stack2 = [];
+      this.stack1 = new stack;
+      this.stack2 = new stack;
     }
   
     enqueue(value) {
       this.stack1.push(value);
       this.stack2.push(value);
-      console.log(this.stack1,this.stack2);
+    //   console.log(this.stack1,this.stack2);
     }
   
     dequeue() {
-      if (this.stack1.length === 0) {
-          return "the stack1 is empty "; 
-        }
-        else{
-            const element = this.stack1.pop();
-            console.log(element);
-        }
-
-
-     if (this.stack2.length === 0) {
-        return "the stack2 is empty "; 
-
-      }
-      else{
-        const element = this.stack2.pop();
+        const element = this.stack1.pop();
         console.log(element);
-    }}
+        const element2 = this.stack2.pop();
+        console.log(element2);
+
+    //   if (this.stack1.length === 0) {
+    //       return "the stack1 is empty "; 
+    //     }
+    //     else{
+    //         const element = this.stack1.pop();
+    //         console.log(element);
+    //     }
+
+
+    //  if (this.stack2.length === 0) {
+    //     return "the stack2 is empty "; 
+
+    //   }
+    //   else{
+    //     const element = this.stack2.pop();
+    //     console.log(element);
+    // }
+}
   
     isEmpty() {
       return this.stack1.length === 0 && this.stack2.length === 0;
