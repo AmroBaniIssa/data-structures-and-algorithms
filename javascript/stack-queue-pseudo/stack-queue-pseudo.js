@@ -7,8 +7,7 @@ class Queue {
   
     enqueue(value) {
       this.stack1.push(value);
-      this.stack2.push(value);
-    //   console.log(this.stack1,this.stack2);
+      
     }
   
     dequeue() {
@@ -16,37 +15,26 @@ class Queue {
         console.log(element);
         const element2 = this.stack2.pop();
         console.log(element2);
-
-    //   if (this.stack1.length === 0) {
-    //       return "the stack1 is empty "; 
-    //     }
-    //     else{
-    //         const element = this.stack1.pop();
-    //         console.log(element);
-    //     }
-
-
-    //  if (this.stack2.length === 0) {
-    //     return "the stack2 is empty "; 
-
-    //   }
-    //   else{
-    //     const element = this.stack2.pop();
-    //     console.log(element);
-    // }
+    
+    
+      //if both stacks are empty, return undefined
+      if (this.stack1.length === 0 && this.stack2.length === 0) {
+          return undefined; 
+        }
+      //if stack2 is empty, pop all elements from stack1 to stack2 till stack1 is empty
+     if (this.stack2.length === 0) {
+      while (this.stack1.size() !== 0) {
+        this.stack2.push(this.stack1.pop());
+      }
+      return this.stack2.pop();
+      }
+    
 }
-  
-    isEmpty() {
-      return this.stack1.length === 0 && this.stack2.length === 0;
-    }
-  
-    size() {
-      return this.stack1.length + this.stack2.length;
-    }
+   
   }
   
 const queue = new Queue();
 queue.enqueue(10);
 queue.enqueue(15);
 queue.enqueue(20);
-queue.dequeue();
+console.log(queue.dequeue());
