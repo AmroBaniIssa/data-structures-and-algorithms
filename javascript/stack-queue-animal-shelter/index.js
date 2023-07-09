@@ -2,12 +2,11 @@ const  {Animal,AnimalShelter} = require('./queue');
 
 const animalQueue = new AnimalShelter();
 
-const dog1 = new Animal('dog', 'Buddy');
+const dog1 = new Animal('dog', 'Oliver');
 const dog2 = new Animal('dog', 'buty');
-const cat1 = new Animal('cat', 'caty');
-const cat2 = new Animal('cat', 'Smokey');
-const cat3 = new Animal('cat', 'candy');
-const notDogOrCat = new Animal('bird', 'noname');
+const cat1 = new Animal('cat', 'Bella');
+const cat2 = new Animal('cat', 'Luna');
+const cat3 = new Animal('cat', 'Max');
 
 
 
@@ -18,7 +17,6 @@ animalQueue.enqueue(dog2);
 animalQueue.enqueue(cat1);
 animalQueue.enqueue(cat2);
 animalQueue.enqueue(cat3);
-animalQueue.enqueue(notDogOrCat);
 
 
 console.log(animalQueue); 
