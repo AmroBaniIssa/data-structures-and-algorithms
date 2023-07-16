@@ -25,7 +25,7 @@ class BST {
       }
     };
     traverse(this.root);
-    return newNode;
+    return newNode.value;
   }
 
   search(value) {
