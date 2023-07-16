@@ -1,5 +1,5 @@
 'use strict';
-const BinaryTree = require('../bst');
+const BST = require('../bst');
 const Node = require('../Node');
 
 let tree = null;
@@ -26,23 +26,19 @@ three.right = seven;
 tree = new BinaryTree(one);
     });
     it("constructor", () => {
-        const newTree = new BinaryTree();
+        const newTree = new BST();
         expect(newTree.root).toBeNull();
         expect(tree.root.value).toEqual(1);
     });
-    it('preOrder', () => {
-        let expectedOutput = [ 1, 2, 4, 5,3, 6, 7];
-        let preOrder = tree.preOrder();
+    it('add', () => {
+        let expectedOutput = 9;
+        let preOrder = tree.add(9);
         expect(preOrder).toEqual(expectedOutput);
     });
-    it('inOrder', () => {
-        let expectedOutput = [4, 2, 5, 1,6, 3, 7];
+    it('search', () => {
+        let expectedOutput = [3];
         let inOrder = tree.inOrder();
         expect(inOrder).toEqual(expectedOutput);
     });
-    it('postOrder', () => {
-        let expectedOutput = [ 4, 5, 2, 6,7, 3, 1];
-        let postOrder = tree.postOrder();
-        expect(postOrder).toEqual(expectedOutput);
-    });
+    
 })
