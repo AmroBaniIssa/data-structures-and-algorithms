@@ -11,10 +11,8 @@ class kAryTree {
   add(node) {
     // Add a child node to the current node
     let y = new Node(node);
-    // if (this.children.length < 5) {
     // console.log(this)
     this.root.children.push(y);
-    // }
   }
 
   traverseBreadth() {
