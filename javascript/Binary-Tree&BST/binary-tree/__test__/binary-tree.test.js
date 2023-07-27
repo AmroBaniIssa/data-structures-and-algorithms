@@ -45,4 +45,24 @@ tree = new BinaryTree(one);
         let postOrder = tree.postOrder();
         expect(postOrder).toEqual(expectedOutput);
     });
+   
+    // test for add and search
+    it('add', () => {
+        let expectedOutput = 9;
+        let preOrder = tree.add(9);
+        expect(preOrder).toEqual(expectedOutput);
+    });
+    it('search', () => {
+        let expectedOutput = [3];
+        let inOrder = tree.inOrder();
+        expect(inOrder).toEqual(expectedOutput);
+    });
+
+    // test for tree max
+    it('max', () => {
+        let expectedOutput = 7;
+        let max = tree.max();
+        expect(max).toEqual(expectedOutput);
+    });
+
 })
