@@ -24,8 +24,22 @@ tree = new BinaryTree(one);
 let preOrder = tree.preOrder();
 let inOrder = tree.inOrder();
 let postOrder = tree.postOrder();
+let traverseBreadthFirst = tree.traverseBreadth();
+
+
+// implement the max function
+let max = tree.max();
+
+// implement the add and search functions
+let add = tree.add(9);
+let search = tree.search(3);
+
 
 
 console.log('preOrder: ', preOrder);
 console.log('inOrder: ', inOrder);
 console.log('postOrder: ', postOrder);
+console.log('traverseBreadthFirst: ', traverseBreadthFirst);
+console.log('add: ', add);
+console.log('search: ', search);
+console.log('max: ', max);
