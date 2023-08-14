@@ -64,18 +64,18 @@ class kAryTree {
       // if(x.children){
 
       for (let i = 0; i < x.children.length; i++) {
-        if (x.children[i].value / 3 === 0) {
+        if (x.children[i].value % 3 === 0) {
           x.children[i].value = "Fizz";
           console.log("/3333333333333", x.children[i].value);
           queue.enqueue(x.children[i]);
         }
-        if (x.children[i].value / 5 === 0) {
+        if (x.children[i].value % 5 === 0) {
           x.children[i].value = "Buzz";
           console.log("/5555555555555555", x.children[i].value);
 
           queue.enqueue(x.children[i]);
         }
-        if (x.children[i].value / 3 === 0 && x.children[i].value / 5) {
+        if (x.children[i].value % 3 === 0 && x.children[i].value %5 ===0) {
           x.children[i].value = "FizzBuzz";
           queue.enqueue(x.children[i]);
         } else {
