@@ -29,16 +29,16 @@ const sampleMovies = [
         { title: 'The Matrix', year: 1999, genres: ['Action', 'Science Fiction'] }
       ]);
     });
-  });
-
-  
+    
+    
     test('sorts by alphabeti', () => {
-      const sortedByAlphabet = sortByAlphabet([...sampleMovies]);
-      expect(sortedByAlphabet).toEqual([
-        { title: 'Inception', year: 2010, genres: [ 'Action', 'Science Fiction' ] },
-        { title: 'The Avengers', year: 2012, genres: [ 'Action', 'Adventure' ] },
-        { title: 'The Matrix', year: 1999, genres: [ 'Action', 'Science Fiction' ] }
-    ]);
+        const sortedByAlphabet = sortByAlphabet([...sampleMovies]);
+        expect(sortedByAlphabet).toEqual([
+            { title: 'Inception', year: 2010, genres: [ 'Action', 'Science Fiction' ] },
+            { title: 'The Avengers', year: 2012, genres: [ 'Action', 'Adventure' ] },
+            { title: 'The Matrix', year: 1999, genres: [ 'Action', 'Science Fiction' ] }
+        ]);
     });
+});
   
   
