@@ -1,5 +1,9 @@
 function mergeSort(arr) {
     const n = arr.length;
+
+    // if (n<1){
+    //   return "enter an array with some elements"
+    // }
   
     if (n > 1) {
       const mid = Math.floor(n / 2);
