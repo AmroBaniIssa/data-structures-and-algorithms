@@ -1,1 +1,1 @@
-console.log("hi")
+console.log("soory, I moved the solution to the first file (hashtable.js)")
