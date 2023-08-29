@@ -115,7 +115,7 @@ class Hashmap {
   }
 
   repeatedWord(String) {
-    const words = String.toLowerCase().split(/\s+|,/); // this to split at every space and egnoring commas
+    const words = String.toLowerCase().split(/\s+|,/); //=============================== this to split at every space and egnoring commas
     // console.log("allllllllllll",words);
     for (let i = 1; i < words.length; i++) {
       // console.log("eachword",words[i]);
@@ -125,7 +125,7 @@ class Hashmap {
 
     let repeated = [];
     this.map.forEach((linkedList) => {
-      const allWordes = [];
+      const allWordes = []; // =========================================================this to put all words in each linkedlist in one array
       if (linkedList) {
         const values = linkedList.print();
         // console.log("valuesss", values);
@@ -136,6 +136,8 @@ class Hashmap {
         let allWordeAtOneLinkedList = allWordes.flat();
         // console.log("jaskaajlsaskj,", allWordeAtOneLinkedList);
         // const wordsArray = allWordeAtOneLinkedList;
+
+        //==============================================================================this to checke if there is a repeted wordes in the array
         const wordsArray = {};
         let foundRepeatedWord = false;
         // console.log("hhhhhhhhhhhhhhhhhhhh", wordsArray);
@@ -147,9 +149,9 @@ class Hashmap {
             continue; // Skip empty strings
           }
           if (wordsArray[element]) {
+            foundRepeatedWord = true;
             console.log(`"${element}" is the repeated element`);
             repeated.push(element);
-            foundRepeatedWord = true;
             break;
           }
           // if (wordsArray.includes(Object.values(values[i]).join())) {
@@ -174,15 +176,14 @@ const myHashmap = new Hashmap(8);
 // myHashmap.add("sameer", "admin");
 // myHashmap.add("khaled", "admin");
 // myHashmap.repeatedWord(
-//   "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didnt know what I was doing in New York..."
-// );
-myHashmap.repeatedWord("Once upon a time, there was a brave princess who...");
-
 // console.log(myHashmap.get("ahmad"));
 // console.log(myHashmap.get("amal"));
 // console.log(myHashmap.get("amro"));
-
 // console.log(myHashmap.has("fatimah"));
 // console.log(myHashmap.has("amro"));
-
 // console.log(myHashmap.keys());
+
+
+//   "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didnt know what I doing in New York..."
+// );
+myHashmap.repeatedWord("Once upon a time, there was a brave princess who...");
