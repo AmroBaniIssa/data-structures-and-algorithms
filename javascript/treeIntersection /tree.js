@@ -1,6 +1,6 @@
 const Node = require("./Node");
-const Hashmap = require('../hashtable/hashtable')
-
+const Hashmap = require("../hashtable/hashtable");
+const LinkedList = require('../hashtable/linkedlist');
 class NewTree {
   constructor(root = null) {
     this.root = root;
@@ -18,32 +18,32 @@ class NewTree {
 }
 
 function CommonValues(tree1, tree2) {
-    console.log(tree1)
-    console.log(tree2)
-    for(let i=0; i<tree1.length; i++){
-        const hash = makeHash(tree1[i]);
+  console.log(tree1);
+  console.log(tree2);
+  const myHashmap = new Hashmap(20);
+  const commons = [];
 
+  for (let i = 0; i < tree1.length; i++) {
+    const hash = myHashmap.makeHash(tree1[i].toString());// my method (makeHash) take the value as string values only
+    if (!myHashmap.map[hash]) {
+      myHashmap.map[hash] = new LinkedList();
     }
-    // const hashmap = {};
-    // const commonValues = [];
 
-    // inorderTraversal(root1, hashmap);
+    myHashmap.map[hash].append(tree1[i]);
+  }
 
-    // function findCommon(node) {
-    //     if (node) {
-    //         if (hashmap[node.value]) {
-    //             commonValues.push(node.value);
-    //         }
-    //         findCommon(node.left);
-    //         findCommon(node.right);
-    //     }
-    // }
-
-    // findCommon(root2);
-    // return commonValues;
+  for (let i = 0; i < tree2.length; i++) {
+    const hash = myHashmap.makeHash(tree2[i].toString());
+    if (myHashmap.map[hash]) {
+        commons.push(tree2[i]);
+        myHashmap.map[hash].append(tree2[i]);
+    } 
+    
 }
+console.log("commons",commons)
 
 
+}
 
 let one = new Node(1);
 let two = new Node(2);
@@ -54,20 +54,17 @@ let six = new Node(6);
 let seven = new Node(7);
 let eght = new Node(8);
 
-
 one.left = two;
 one.right = three;
 two.left = four;
 
-seven.right =five;
+seven.right = five;
 seven.left = six;
 five.right = eght;
-six.right=one
-
+six.right = three;
 
 tree1 = new NewTree(one);
 tree2 = new NewTree(seven);
-
 
 let preOrder1 = tree1.preOrder();
 let preOrder2 = tree2.preOrder();
@@ -75,5 +72,4 @@ let preOrder2 = tree2.preOrder();
 // console.log("tree1",preOrder1)
 // console.log("tree2",preOrder2)
 
-
-CommonValues(preOrder1,preOrder2)
+CommonValues(preOrder1, preOrder2);
