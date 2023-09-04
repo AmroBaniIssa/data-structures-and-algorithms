@@ -18,28 +18,42 @@ class NewTree {
 }
 
 function CommonValues(tree1, tree2) {
-  console.log(tree1);
-  console.log(tree2);
+  // console.log(tree1);
+  // console.log(tree2);
   const myHashmap = new Hashmap(20);
   const commons = [];
 
-  for (let i = 0; i < tree1.length; i++) {
-    const hash = myHashmap.makeHash(tree1[i].toString());// my method (makeHash) take the value as string values only
+  // for (let i = 0; i < tree1.length; i++) {
+  //   const hash = myHashmap.makeHash(tree1[i].toString());// my method (makeHash) take the value as string values only
+  //   if (!myHashmap.map[hash]) {
+  //     myHashmap.map[hash] = new LinkedList();
+  //   }
+
+  //   myHashmap.map[hash].append(tree1[i]);
+  // }
+  tree1.preOrder().forEach((value) => {
+    const hash = myHashmap.makeHash(value.toString());
     if (!myHashmap.map[hash]) {
       myHashmap.map[hash] = new LinkedList();
     }
+    myHashmap.map[hash].append(value);
+  });
 
-    myHashmap.map[hash].append(tree1[i]);
-  }
+  // for (let i = 0; i < tree2.length; i++) {
+  //   const hash = myHashmap.makeHash(tree2[i].toString());
+  //   if (myHashmap.map[hash]) {
+  //       commons.push(tree2[i]);
+  //       myHashmap.map[hash].append(tree2[i]);
+  //   } }
+  tree2.preOrder().forEach((value) => {
+    const hash = myHashmap.makeHash(value.toString());
+    if (myHashmap.map[hash] && !commons.includes(value)) {
+      commons.push(value);
+    }
+  });
 
-  for (let i = 0; i < tree2.length; i++) {
-    const hash = myHashmap.makeHash(tree2[i].toString());
-    if (myHashmap.map[hash]) {
-        commons.push(tree2[i]);
-        myHashmap.map[hash].append(tree2[i]);
-    } 
     
-}
+
 console.log("commons",commons)
 
 
@@ -66,10 +80,11 @@ six.right = three;
 tree1 = new NewTree(one);
 tree2 = new NewTree(seven);
 
-let preOrder1 = tree1.preOrder();
-let preOrder2 = tree2.preOrder();
+// let preOrder1 = tree1.preOrder();
+// let preOrder2 = tree2.preOrder();
 
 // console.log("tree1",preOrder1)
 // console.log("tree2",preOrder2)
 
-CommonValues(preOrder1, preOrder2);
+CommonValues(tree1, tree2);
+module.exports = NewTree;
