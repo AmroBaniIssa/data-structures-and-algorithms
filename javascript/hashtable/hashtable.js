@@ -1,37 +1,5 @@
 "use strict";
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
-class LinkedList {
-  constructor() {
-    this.head = null;
-  }
-  append(value) {
-    const node = new Node(value);
-    if (!this.head) {
-      this.head = node;
-      return;
-    }
-    let current = this.head;
-    while (current.next) {
-      current = current.next;
-    }
-    current.next = node;
-  }
-  // returning the all the values  from the linkedList
-  print() {
-    let values = [];
-    let current = this.head;
-    while (current) {
-      values.push(current.value);
-      current = current.next;
-    }
-    return values;
-  }
-}
+const LinkedList = require('./linkedlist');
 class Hashmap {
   constructor(size) {
     this.size = size;
@@ -166,7 +134,7 @@ class Hashmap {
     });
   }
 }
-
+module.exports = Hashmap;
 const myHashmap = new Hashmap(8);
 
 // myHashmap.add("ahmad", "user");
@@ -186,4 +154,4 @@ const myHashmap = new Hashmap(8);
 
 //   "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didnt know what I doing in New York..."
 // );
-myHashmap.repeatedWord("Once upon a time, there was a brave princess who...");
+// myHashmap.repeatedWord("Once upon a time, there was a brave princess who...");
