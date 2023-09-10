@@ -33,23 +33,49 @@ class Graph {
 
   getNeighbors(vertex) {
     if (this.adjacencyList.has(vertex)) {
-        const result = [];
-        const Vertices = this.adjacencyList.get(vertex).entries();
-        
-        for (const [key, edge] of Vertices) {
-            result.push([{ vertex: edge.vertex.value, weight: edge.weight }]);
-        }
-        
-        return result;
-    } else {
-        return [];
-    }
-}
+      const result = [];
+      const Vertices = this.adjacencyList.get(vertex).entries();
 
+      for (const [key, edge] of Vertices) {
+        result.push([{ vertex: edge.vertex.value, weight: edge.weight }]);
+      }
+
+      return result;
+    } else {
+      return [];
+    }
+  }
 
   size() {
     return this.adjacencyList.size;
   }
+
+
+breadthFirst(start) {
+  if (this.adjacencyList.size === 0) {
+      return "Empty graph";
+  }
+  if (!this.adjacencyList.has(start)) {
+      return null;
+  }
+  let queue = [];
+  let visited = new Set();
+  let current;
+  queue.push(start);
+  visited.add(start);
+  while (queue.length) {
+      let front = queue.shift();
+      current = this.adjacencyList.get(front);
+      current.forEach((neighbor) => {
+          if (!visited.has(neighbor.vertex)) {
+              queue.push(neighbor.vertex);
+              visited.add(neighbor.vertex);
+          }
+      });
+  }
+  return visited;
+}
+
 }
 module.exports = Graph;
 
@@ -80,8 +106,9 @@ myGraph.addDirectedEdge(zero, two);
 myGraph.addDirectedEdge(five, four);
 
 console.log(myGraph.getVertices());
-console.log(myGraph.getNeighbors(zero));
-console.log(myGraph.size());
+// console.log(myGraph.getNeighbors(zero));
+// console.log(myGraph.size());
+console.log(myGraph.breadthFirst(zero))
 
 // console.log("after", myGraph);
 

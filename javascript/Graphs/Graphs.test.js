@@ -43,4 +43,21 @@ describe("Graph", () => {
     graph.addVertex("C");
     expect(graph.size()).toEqual(3);
   });
+  it("Testing breadth first", () => {
+
+    const myGraph = new Graph();
+    myGraph.addVertex(1);
+    myGraph.addVertex(2);
+    myGraph.addVertex(3);
+    myGraph.addVertex(4);
+    myGraph.addVertex(5);
+    myGraph.addDirectedEdge(1, 2);
+    myGraph.addDirectedEdge(1, 3);
+    myGraph.addDirectedEdge(2, 3);
+    myGraph.addDirectedEdge(2, 4);
+    myGraph.addDirectedEdge(4, 5);
+    myGraph.addDirectedEdge(5, 3);
+    expect(myGraph.breadthFirst(1)).toEqual(new Set([1, 2, 3, 4, 5]));
+  });
+
 });
