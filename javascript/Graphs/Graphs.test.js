@@ -44,7 +44,6 @@ describe("Graph", () => {
     expect(graph.size()).toEqual(3);
   });
   it("Testing breadth first", () => {
-
     const myGraph = new Graph();
     myGraph.addVertex(1);
     myGraph.addVertex(2);
@@ -60,4 +59,24 @@ describe("Graph", () => {
     expect(myGraph.breadthFirst(1)).toEqual(new Set([1, 2, 3, 4, 5]));
   });
 
+  it("Testing the trip path ", () => {
+    const businessGraph = new Graph();
+    businessGraph.addVertex(Pandora);
+    businessGraph.addVertex(Arendelle);
+    businessGraph.addVertex(Monstropolis);
+    businessGraph.addVertex(Naboo);
+    businessGraph.addVertex(Narnia);
+    businessGraph.addVertex(Metroville);
+    businessGraph.addDirectedEdge(Pandora, Arendelle, 150);
+    businessGraph.addDirectedEdge(Pandora, Metroville, 82);
+    businessGraph.addDirectedEdge(Arendelle, Monstropolis, 42);
+    businessGraph.addDirectedEdge(Arendelle, Metroville, 99);
+    businessGraph.addDirectedEdge(Metroville, Monstropolis, 105);
+    businessGraph.addDirectedEdge(Metroville, Naboo, 26);
+    businessGraph.addDirectedEdge(Metroville, Narnia, 37);
+    businessGraph.addDirectedEdge(Naboo, Monstropolis, 73);
+    businessGraph.addDirectedEdge(Naboo, Narnia, 250);
+
+    expect(businessTrip(businessGraph, ["Metroville", "Pandora"])).toEqual(82);
+  });
 });

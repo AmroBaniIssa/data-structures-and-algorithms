@@ -4,6 +4,7 @@ const Edge = require("./Edge");
 class Graph {
   constructor() {
     this.adjacencyList = new Map();
+    this.edges = [];
   }
   addVertex(vertex) {
     this.adjacencyList.set(vertex, []);
@@ -17,6 +18,7 @@ class Graph {
       const adjacencies = this.adjacencyList.get(start);
       let edge = new Edge(end, weight);
       adjacencies.push(edge);
+      this.edges.push({ start, end, weight });
     }
   }
 
@@ -27,7 +29,7 @@ class Graph {
     for (const vertex of this.adjacencyList.keys()) {
       vertices.push(vertex);
     }
-
+    console.log("/////////",this.edges);
     return vertices;
   }
 
@@ -50,32 +52,31 @@ class Graph {
     return this.adjacencyList.size;
   }
 
-
-breadthFirst(start) {
-  if (this.adjacencyList.size === 0) {
+  breadthFirst(start) {
+    if (this.adjacencyList.size === 0) {
       return "Empty graph";
-  }
-  if (!this.adjacencyList.has(start)) {
+    }
+    if (!this.adjacencyList.has(start)) {
       return null;
-  }
-  let queue = [];
-  let visited = new Set();
-  let current;
-  queue.push(start);
-  visited.add(start);
-  while (queue.length) {
+    }
+    let queue = [];
+    let visited = new Set();
+    let current;
+    queue.push(start);
+    visited.add(start);
+    while (queue.length) {
       let front = queue.shift();
       current = this.adjacencyList.get(front);
       current.forEach((neighbor) => {
-          if (!visited.has(neighbor.vertex)) {
-              queue.push(neighbor.vertex);
-              visited.add(neighbor.vertex);
-          }
+        if (!visited.has(neighbor.vertex)) {
+          queue.push(neighbor.vertex);
+          visited.add(neighbor.vertex);
+        }
       });
-  }
-  return visited;
-}
+    }
 
+    return visited;
+  }
 }
 module.exports = Graph;
 
@@ -108,7 +109,7 @@ myGraph.addDirectedEdge(five, four);
 console.log(myGraph.getVertices());
 // console.log(myGraph.getNeighbors(zero));
 // console.log(myGraph.size());
-console.log(myGraph.breadthFirst(zero))
+console.log(myGraph.breadthFirst(zero));
 
 // console.log("after", myGraph);
 
