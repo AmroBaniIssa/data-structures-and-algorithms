@@ -59,6 +59,28 @@ describe("Graph", () => {
     expect(myGraph.breadthFirst(1)).toEqual(new Set([1, 2, 3, 4, 5]));
   });
 
+  it("Testing depth first", () => {
+    const myGraph = new Graph();
+    myGraph.addVertex(A);
+    myGraph.addVertex(B);
+    myGraph.addVertex(C);
+    myGraph.addVertex(D);
+    myGraph.addVertex(E);
+    myGraph.addVertex(F);
+    myGraph.addVertex(G);
+    myGraph.addVertex(H);
+    myGraph.addDirectedEdge(A, D);
+    myGraph.addDirectedEdge(A, B);
+    myGraph.addDirectedEdge(B, D);
+    myGraph.addDirectedEdge(D, F);
+    myGraph.addDirectedEdge(D, H);
+    myGraph.addDirectedEdge(D, E);
+    myGraph.addDirectedEdge(B, C);
+    myGraph.addDirectedEdge(C, G);
+    myGraph.addDirectedEdge(F, H);
+    expect(myGraph.breadthFirst(A)).toEqual([A,B,C,G,D,E,H,F]);
+  });
+
   it("Testing the trip path ", () => {
     const businessGraph = new Graph();
     businessGraph.addVertex(Pandora);
