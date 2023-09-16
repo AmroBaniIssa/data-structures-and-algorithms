@@ -29,7 +29,7 @@ class Graph {
     for (const vertex of this.adjacencyList.keys()) {
       vertices.push(vertex);
     }
-    console.log("/////////",this.edges);
+    console.log("/////////", this.edges);
     return vertices;
   }
 
@@ -77,6 +77,38 @@ class Graph {
 
     return visited;
   }
+
+  depthFirst(start) {
+    if (this.adjacencyList.size === 0) {
+      return "Empty graph";
+    }
+    if (!this.adjacencyList.has(start)) {
+      return null;
+    }
+    let stack = [];
+    let visited = new Set();
+    const result = [];
+    let current;
+    stack.push(start);
+    visited.add(start);
+    while (stack.length) {
+      let front = stack.pop();
+      result.push(front);
+      // the main difference between Breadth-first and depth-first is that
+      // Breadth-first search we explores all neighbors of a vertex before pushing it to the result.
+      // while  Depth-First we push vertices in to result befoor explores other neighbors,
+      // so we go as deep as possible before backtracking.
+      current = this.adjacencyList.get(front);
+      current.forEach((neighbor) => {
+        if (!visited.has(neighbor.vertex)) {
+          stack.push(neighbor.vertex);
+          visited.add(neighbor.vertex);
+        }
+      });
+    }
+
+    return result;
+  }
 }
 module.exports = Graph;
 
@@ -109,10 +141,46 @@ myGraph.addDirectedEdge(five, four);
 console.log(myGraph.getVertices());
 // console.log(myGraph.getNeighbors(zero));
 // console.log(myGraph.size());
-console.log(myGraph.breadthFirst(zero));
+console.log("breadth First", myGraph.breadthFirst(zero));
+console.log("depth First", myGraph.depthFirst(zero));
 
 // console.log("after", myGraph);
 
 // for (const [k, v] of myGraph.adjacencyList.entries()) {
 //   console.log("k=> ", k, "v=> ", v);
 // }
+
+const A = new Vertex("A");
+const B = new Vertex("B");
+const C = new Vertex("C");
+const D = new Vertex("D");
+const E = new Vertex("E");
+const F = new Vertex("F");
+const G = new Vertex("G");
+const H = new Vertex("H");
+
+const NEWEXAMPLE = new Graph();
+
+NEWEXAMPLE.addVertex(A);
+NEWEXAMPLE.addVertex(B);
+NEWEXAMPLE.addVertex(C);
+NEWEXAMPLE.addVertex(D);
+NEWEXAMPLE.addVertex(E);
+NEWEXAMPLE.addVertex(F);
+NEWEXAMPLE.addVertex(G);
+NEWEXAMPLE.addVertex(H);
+
+// console.log(NEWEXAMPLE);
+
+NEWEXAMPLE.addDirectedEdge(A, D);
+NEWEXAMPLE.addDirectedEdge(A, B);
+NEWEXAMPLE.addDirectedEdge(B, D);
+NEWEXAMPLE.addDirectedEdge(D, F);
+NEWEXAMPLE.addDirectedEdge(D, H);
+NEWEXAMPLE.addDirectedEdge(D, E);
+NEWEXAMPLE.addDirectedEdge(B, C);
+NEWEXAMPLE.addDirectedEdge(C, G);
+NEWEXAMPLE.addDirectedEdge(F, H);
+
+console.log("breadthFirst", NEWEXAMPLE.breadthFirst(A));
+console.log("depth", NEWEXAMPLE.depthFirst(A));
