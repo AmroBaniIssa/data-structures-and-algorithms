@@ -82,57 +82,55 @@ class Hashmap {
     return this.makeHash(key);
   }
 
-  repeatedWord(String) {
-    const words = String.toLowerCase().split(/\s+|,/); //=============================== this to split at every space and egnoring commas
-    // console.log("allllllllllll",words);
-    for (let i = 1; i < words.length; i++) {
-      // console.log("eachword",words[i]);
-      // const hash = this.makeHash(words[i]);
-      this.add(words[i], words[i]);
-    }
-
-    let repeated = [];
-    this.map.forEach((linkedList) => {
-      const allWordes = []; // =========================================================this to put all words in each linkedlist in one array
-      if (linkedList) {
-        const values = linkedList.print();
-        // console.log("valuesss", values);
-        for (let i = 0; i < values.length; i++) {
-          const wordsInLL = Object.values(values[i]);
-          allWordes.push(wordsInLL);
-        }
-        let allWordeAtOneLinkedList = allWordes.flat();
-        // console.log("jaskaajlsaskj,", allWordeAtOneLinkedList);
-        // const wordsArray = allWordeAtOneLinkedList;
-
-        //==============================================================================this to checke if there is a repeted wordes in the array
-        const wordsArray = {};
-        let foundRepeatedWord = false;
-        // console.log("hhhhhhhhhhhhhhhhhhhh", wordsArray);
-        for (let i = 0; i < allWordeAtOneLinkedList.length; i++) {
-          const element = allWordeAtOneLinkedList[i];
-          // console.log("the array", wordsArray);
-          // console.log(Object.values(values[i]).join());
-          if (element === "") {
-            continue; // Skip empty strings
-          }
-          if (wordsArray[element]) {
-            foundRepeatedWord = true;
-            console.log(`"${element}" is the repeated element`);
-            repeated.push(element);
-            break;
-          }
-          // if (wordsArray.includes(Object.values(values[i]).join())) {
-          //   console.log(values[i], "we Found a repeated element");
-          // }
-          else {
-            wordsArray[element] = true;
-            // console.log("foooooooooooooooooooooooooooooooolse");
-          }
-        }
-      }
-    });
-  }
+  // repeatedWord(String) {
+  //   const words = String.toLowerCase().split(/\s+|,/); //=============================== this to split at every space and egnoring commas
+  //   // console.log("allllllllllll",words);
+  //   for (let i = 1; i < words.length; i++) {
+  //     // console.log("eachword",words[i]);
+  //     // const hash = this.makeHash(words[i]);
+  //     this.add(words[i], words[i]);
+  //   }
+  //   let repeated = [];
+  //   this.map.forEach((linkedList) => {
+  //     const allWordes = []; // =========================================================this to put all words in each linkedlist in one array
+  //     if (linkedList) {
+  //       const values = linkedList.print();
+  //       // console.log("valuesss", values);
+  //       for (let i = 0; i < values.length; i++) {
+  //         const wordsInLL = Object.values(values[i]);
+  //         allWordes.push(wordsInLL);
+  //       }
+  //       let allWordeAtOneLinkedList = allWordes.flat();
+  //       // console.log("jaskaajlsaskj,", allWordeAtOneLinkedList);
+  //       // const wordsArray = allWordeAtOneLinkedList;
+  //       //==============================================================================this to checke if there is a repeted wordes in the array
+  //       const wordsArray = {};
+  //       let foundRepeatedWord = false;
+  //       // console.log("hhhhhhhhhhhhhhhhhhhh", wordsArray);
+  //       for (let i = 0; i < allWordeAtOneLinkedList.length; i++) {
+  //         const element = allWordeAtOneLinkedList[i];
+  //         // console.log("the array", wordsArray);
+  //         // console.log(Object.values(values[i]).join());
+  //         if (element === "") {
+  //           continue; // Skip empty strings
+  //         }
+  //         if (wordsArray[element]) {
+  //           foundRepeatedWord = true;
+  //           console.log(`"${element}" is the repeated element`);
+  //           repeated.push(element);
+  //           break;
+  //         }
+  //         // if (wordsArray.includes(Object.values(values[i]).join())) {
+  //         //   console.log(values[i], "we Found a repeated element");
+  //         // }
+  //         else {
+  //           wordsArray[element] = true;
+  //           // console.log("foooooooooooooooooooooooooooooooolse");
+  //         }
+  //       }
+  //     }
+  //   });
+  // }
 }
 module.exports = Hashmap;
 const myHashmap = new Hashmap(8);
